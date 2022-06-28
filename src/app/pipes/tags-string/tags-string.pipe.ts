@@ -10,7 +10,7 @@ export class TagsStringPipe implements PipeTransform {
     if (prefix) {
       newValue = value.map(t => prefix + t)
     }
-    return newValue.join(', ').toUpperCase();
+    return newValue.join(' ').toUpperCase();
   }
 
 }

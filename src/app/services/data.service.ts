@@ -7,8 +7,9 @@ import { Todo } from '../model/todo';
   providedIn: 'root'
 })
 export class DataService {
-
-  private readonly BASE_URL = 'https://62b965c0ff109cd1dc911428.mockapi.io/todo'
+ 
+  
+  private readonly BASE_URL = 'https://628b2f157886bbbb37b20caa.mockapi.io/todos'
 
   public todos = new BehaviorSubject<Todo[]>([]);
 
@@ -59,6 +60,45 @@ export class DataService {
       },
       error: err => console.log(err)
     })
-
   }
+
+
+  getTodoById(id: string) {
+    // return this.todos.value.find(todo => todo.id === id);
+    return this.todos.pipe(
+      map(todos => todos.find(todo => todo.id === id))
+    )
+  }
+
+
+  putTodo(todo: Todo){
+    const url = this.BASE_URL + '/' + todo.id;
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.http.put<Todo>(url, todo, {headers}).subscribe({
+      next: todo => {
+        const newArray = [...this.todos.value]
+        this.todos.next(newArray);
+      },
+      error: err => console.log(err)
+    })
+  }
+
+  saveTodo(todo: Todo) {
+    
+  if (todo.id) {
+    this.putTodo(todo);
+    return;
+  }
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  this.http.post<Todo>(this.BASE_URL, todo, {headers}).subscribe({
+    next: todo => {
+      const newArray = [...this.todos.value]
+      this.todos.next(newArray);
+    },
+    error: err => console.error(err)   
+  })
+}
+
+
+
 }

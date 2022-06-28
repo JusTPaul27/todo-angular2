@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="form-field">
+        <span class="label">Name</span>
+        <input type="text" [(ngModel)]="todo.name">
+    </div>
+    <div class="form-field">
+        <span class="label">Priority: </span>
+        <input type="number" [(ngModel)]="todo.priority">
+    </div>
+    <div class="form-field">
+        <span class="label">Tags: </span>
+        <input type="text" [ngModel]="(todo.tags | tagsString) " (ngModelChange)="this.todo.tags = convertTags($event)">
+    </div>
+
+    <button [disabled]="!todo.name" (click)="saveTodo()">Save</button>
+</div>

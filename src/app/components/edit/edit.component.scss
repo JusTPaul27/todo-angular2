@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-left: solid 3px crimson;
+    border-bottom: solid 3px crimson;
+    border-bottom-left-radius: 8px;
+    padding: 8px;
+    margin: 8px;
+  }
+
+.form-field{
+    display: flex;
+    gap: 8px;
+
+}
+
+.label{
+    display: inline-block;
+    width: 55px;
+}
+
+input{
+    min-width: 50%;
+}
+
+button{
+    border: none;
+    padding: 4px;
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    background-color: deeppink;
+    cursor: pointer;
+  }
+
+  button:disabled{
+    background-color: rgba(255, 20, 145, 0.181) ;
+  }
