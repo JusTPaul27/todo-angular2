@@ -39,7 +39,7 @@ export class EditComponent implements OnInit {
 
   saveTodo(){
     if (this.todo.creationDate === -1) {
-      this.todo.creationDate = new Date().getTime();
+      this.todo.creationDate = new Date().getTime() /1000;
     }
     if (this.todo.priority < 0) {
       this.todo.priority = 0;

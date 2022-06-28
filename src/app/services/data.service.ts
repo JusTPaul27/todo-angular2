@@ -84,7 +84,7 @@ export class DataService {
   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   this.http.post<Todo>(this.BASE_URL, todo, {headers}).subscribe({
     next: todo => {
-      const newArray = [...this.todos.value]
+      const newArray = [...this.todos.value, todo]
       this.todos.next(newArray);
     },
     error: err => console.error(err)   

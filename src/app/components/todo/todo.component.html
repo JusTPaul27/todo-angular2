@@ -1,11 +1,19 @@
-<div [style.borderColor]="todo.priority | priorityColor" class="container" *ngIf="todo">
-  <span>{{todo.name | uppercase}}</span>
-  <span>{{todo.creationDate | epochFormatter}}</span>
-  <span>{{todo.tags | tagsString: '#'}}</span>
-  <span *ngIf="todo.doneDate">{{todo.doneDate | epochFormatter}}</span>
-  <div>
-    <button (click)="todoCompleted.emit(todo)" [style.backgroundColor]="todo.priority | priorityColor" *ngIf="!todo.doneDate">Completato</button>
-    <button (click)="todoDeleted.emit(todo)" class="delete-btn" *ngIf="todo.doneDate">Elimina</button>
-    <button routerLink="/edit/{{todo.id}}" *ngIf="!todo.doneDate" class="edit-btn" >Modifica</button>
-  </div>
-</div>
+<mat-card *ngIf="todo">
+  <mat-card-title >{{todo.name | uppercase}} </mat-card-title>
+  <mat-card-content class="content">
+    <span>Creato il : {{todo.creationDate | epochFormatter}}</span>
+    <span *ngIf="todo.doneDate">Completato il: {{todo.doneDate | epochFormatter}}</span>
+    <span>Tags: {{todo.tags | tagsString: '#'}}</span>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button  (click)="todoCompleted.emit(todo)" *ngIf="!todo.doneDate" mat-icon-button>
+      <mat-icon>done</mat-icon>
+    </button>
+    <button  (click)="todoDeleted.emit(todo)" *ngIf="todo.doneDate" mat-icon-button>
+      <mat-icon>delete</mat-icon>
+    </button>
+    <button  routerLink="/edit/{{todo.id}}" *ngIf="!todo.doneDate" mat-icon-button>
+      <mat-icon>edit</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

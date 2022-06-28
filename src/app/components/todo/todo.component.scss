@@ -29,3 +29,8 @@ button{
   padding: 4px;
   cursor: pointer;
 }
+
+.content{
+  display: flex;
+  flex-direction: column;
+}

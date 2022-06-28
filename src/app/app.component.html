@@ -1,12 +1,16 @@
-<header>
-  <h1>{{title}}</h1>
-  <nav>
-    <a routerLink="/todos">todo attivi</a>
-    <a routerLink="/done">todo completati</a>
-    <a routerLink="/edit">Crea nuovo</a>
-  </nav>
-</header>
-
+<mat-toolbar color="primary">
+  <span>{{title}}</span>
+  <span class="spacer"></span>
+  <button routerLink="/todos" mat-icon-button >
+    <mat-icon>notifications</mat-icon>
+  </button>
+  <button mat-icon-button >
+    <mat-icon routerLink="/done">task_alt</mat-icon>
+  </button>
+  <button mat-icon-button >
+    <mat-icon routerLink="/edit">add</mat-icon>
+  </button>
+</mat-toolbar>
 <!-- <app-list></app-list> -->
 
 <router-outlet></router-outlet>
