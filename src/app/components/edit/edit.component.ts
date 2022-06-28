@@ -49,7 +49,7 @@ export class EditComponent implements OnInit {
       this.todo.priority = 3 
     }
     this.dataS.saveTodo(this.todo);
-    this.router.navigate('/todo')
+    this.router.navigate(['/todo'])
   }
   
 

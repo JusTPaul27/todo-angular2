@@ -48,18 +48,10 @@ export class DataService {
   }
 
   completeTodo(todo: Todo) {
-    const url = this.BASE_URL + '/' + todo.id;
     const completedTodo = todo;
     completedTodo.priority = -1;
     completedTodo.doneDate = new Date().getTime() / 1000;
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.put<Todo>(url, completedTodo, {headers}).subscribe({
-      next: todo => {
-        const newArray = [...this.todos.value]
-        this.todos.next(newArray);
-      },
-      error: err => console.log(err)
-    })
+    this.putTodo(completedTodo);
   }
 
 
@@ -74,7 +66,7 @@ export class DataService {
   putTodo(todo: Todo){
     const url = this.BASE_URL + '/' + todo.id;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.put<Todo>(url, todo, {headers}).subscribe({
+    this.http.put<Todo>(url, todo, { headers }).subscribe({
       next: todo => {
         const newArray = [...this.todos.value]
         this.todos.next(newArray);
