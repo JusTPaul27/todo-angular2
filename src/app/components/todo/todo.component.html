@@ -3,18 +3,18 @@
   <mat-card-content class="content">
     <span>Creato il : {{todo.creationDate | epochFormatter}}</span>
     <span *ngIf="todo.doneDate">Completato il: {{todo.doneDate | epochFormatter}}</span>
-    <mat-chip-list aria-label="Fish selection">
-      <mat-chip *ngFor="let tag of todo.tags">#{{tag}}</mat-chip>
+    <mat-chip-list  aria-label="Fish selection">
+      <mat-chip  *ngFor="let tag of todo.tags">#{{tag | uppercase}}</mat-chip>
     </mat-chip-list>
   </mat-card-content>
-  <mat-card-actions align="end">
+  <mat-card-actions class="mat-card-action">
     <button  (click)="todoCompleted.emit(todo)" *ngIf="!todo.doneDate" mat-icon-button>
       <mat-icon>done</mat-icon>
     </button>
     <button  (click)="todoDeleted.emit(todo)" mat-icon-button>
       <mat-icon>delete</mat-icon>
     </button>
-    <button  routerLink="/edit/{{todo.id}}" *ngIf="!todo.doneDate" mat-icon-button>
+    <button (click)="todoEdit.emit(todo)" *ngIf="!todo.doneDate" mat-icon-button>
       <mat-icon>edit</mat-icon>
     </button>
   </mat-card-actions>

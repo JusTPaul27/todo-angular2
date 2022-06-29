@@ -1,9 +1,14 @@
 <div class="container">
-  <app-todo
-  *ngFor="let todo of getTodos() | async | prioritySort"
-  [todo]="todo"
-  (todoCompleted)="dataS.completeTodo($event)"
-  (todoDeleted)="dataS.deleteTodo($event)"
-  >
-</app-todo>
+    <app-todo
+    *ngFor="let todo of getTodos() | async | prioritySort"
+    [todo]="todo"
+    (todoCompleted)="dataS.completeTodo($event)"
+    (todoDeleted)="dataS.deleteTodo($event)"
+    (todoEdit)="openDialog($event)"
+    >
+  </app-todo>
+
+  <button class="add-btn" mat-fab color="primary" (click)="openDialog()">
+    <mat-icon>add</mat-icon>
+  </button>
 </div>

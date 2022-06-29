@@ -1,0 +1,101 @@
+@use '@angular/material' as mat;
+
+@include mat.core();
+
+$azul-palette: (
+    50 : #eef5fb,
+    100 : #d4e5f5,
+    200 : #b7d4ee,
+    300 : #9ac2e7,
+    400 : #85b5e1,
+    500 : #6fa8dc,
+    600 : #67a0d8,
+    700 : #5c97d3,
+    800 : #528dce,
+    900 : #407dc5,
+    A100 : #ffffff,
+    A200 : #e3efff,
+    A400 : #b0d3ff,
+    A700 : #96c4ff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$honey-palette: (
+    50 : #fdf8e6,
+    100 : #fbedc2,
+    200 : #f8e199,
+    300 : #f5d470,
+    400 : #f3cb51,
+    500 : #f1c232,
+    600 : #efbc2d,
+    700 : #edb426,
+    800 : #ebac1f,
+    900 : #e79f13,
+    A100 : #ffffff,
+    A200 : #fff4e2,
+    A400 : #ffe2af,
+    A700 : #ffd896,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$dark-primary-color: mat.define-palette(mat.$pink-palette);
+$dark-accent-color: mat.define-palette(mat.$cyan-palette);
+$dark-theme: mat.define-dark-theme((
+ color: (
+   primary: $dark-primary-color,
+   accent: $dark-accent-color,
+ )
+));
+
+$light-primary-color: mat.define-palette($azul-palette);
+$light-accent-color: mat.define-palette($honey-palette);
+$light-theme: mat.define-light-theme((
+ color: (
+   primary: $light-primary-color,
+   accent: $light-accent-color,
+ )
+));
+
+
+@include mat.all-component-themes($dark-theme);
+
+
+.my-light-theme {
+    @include mat.all-component-themes($light-theme);
+    background-color: mat.get-color-from-palette($light-accent-color);
+   }
+
+body{
+    background-color: mat.get-color-from-palette($dark-accent-color);;
+}

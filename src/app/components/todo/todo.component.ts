@@ -11,7 +11,8 @@ export class TodoComponent implements OnInit {
 
   @Input() todo?: Todo;
   @Output() todoCompleted = new EventEmitter<Todo>();
-  @Output() todoDeleted = new EventEmitter<Todo>()
+  @Output() todoDeleted = new EventEmitter<Todo>();
+  @Output() todoEdit = new EventEmitter<Todo>();
 
   constructor() { }
 

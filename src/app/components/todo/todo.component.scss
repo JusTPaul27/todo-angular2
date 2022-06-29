@@ -7,6 +7,7 @@
   border-bottom-left-radius: 8px;
   padding: 8px;
   margin: 8px;
+  
 }
 
 button{
@@ -33,8 +34,15 @@ button{
 .content{
   display: flex;
   flex-direction: column;
+  
 }
 
 mat-card{
   border: solid 4px;
+  border-radius: 16px;
+}
+
+.mat-card-action{
+  display: flex;
+  justify-content: space-between;
 }

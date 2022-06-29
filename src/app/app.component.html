@@ -7,8 +7,11 @@
   <button mat-icon-button >
     <mat-icon routerLink="/done">task_alt</mat-icon>
   </button>
-  <button mat-icon-button >
-    <mat-icon routerLink="/edit">add</mat-icon>
+  <button  *ngIf="isLight" mat-icon-button (click)="changeTheme()">
+    <mat-icon>nights_stay</mat-icon>
+  </button>
+  <button *ngIf="!isLight" mat-icon-button (click)="changeTheme()" >
+    <mat-icon>light_mode</mat-icon>
   </button>
 </mat-toolbar>
 <!-- <app-list></app-list> -->

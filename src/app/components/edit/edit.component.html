@@ -1,16 +1,17 @@
-<div class="container">
-    <div class="form-field">
-        <span class="label">Name</span>
-        <input type="text" [(ngModel)]="todo.name">
-    </div>
-    <div class="form-field">
-        <span class="label">Priority: </span>
-        <input type="number" [(ngModel)]="todo.priority">
-    </div>
-    <div class="form-field">
-        <span class="label">Tags: </span>
-        <input type="text" [ngModel]="(todo.tags | tagsString) " (ngModelChange)="this.todo.tags = convertTags($event)">
-    </div>
-
-    <button [disabled]="!todo.name" (click)="saveTodo()">Save</button>
+<div class="container"  [style.borderColor]="todo.priority | priorityColor">
+    <h2 *ngIf="!id">Aggiungi ToDo</h2>
+    <h2 *ngIf="id">Modifica ToDo</h2>
+    <mat-form-field color="accent" appearance="fill">
+        <mat-label>Todo Name</mat-label>
+        <input matInput type="text"  [(ngModel)]="todo.name">
+      </mat-form-field>
+      <mat-form-field color="accent"  appearance="fill">
+        <mat-label>Priority</mat-label>
+        <input matInput type="number"  [(ngModel)]="todo.priority">
+      </mat-form-field>
+      <mat-form-field color="accent"  appearance="fill">
+        <mat-label>Tags</mat-label>
+        <input matInput type="text"  [ngModel]="(todo.tags | tagsString) " (ngModelChange)="this.todo.tags = convertTags($event)">
+      </mat-form-field>
+    <button mat-button color="white" [disabled]="!todo.name" (click)="saveTodo()">Save</button>
 </div>

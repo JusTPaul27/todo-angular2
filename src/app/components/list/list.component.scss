@@ -6,6 +6,27 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 8px;
+    padding-bottom: 78px;
     margin: 8px;
     gap: 12px;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .container{
+        display: flex;
+        flex-direction: column;
+        padding: 8px;
+        padding-bottom: 78px;
+        margin: 8px;
+        gap: 12px;
+    }
+  }
+
+.add-btn{
+    position: fixed;
+    bottom: 12px;
+    right: 12px;
+}
+
+
