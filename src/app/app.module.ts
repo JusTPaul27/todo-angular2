@@ -7,9 +7,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
-import {MatChipsModule} from '@angular/material/chips';
+import {MatChipInput, MatChipsModule} from '@angular/material/chips';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatInputModule} from '@angular/material/input';
+import {MatSliderModule} from '@angular/material/slider';
 
 
 import { AppComponent } from './app.component';
@@ -34,7 +35,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PriorityColorPipe,
     TagsStringPipe,
     PrioritySortPipe,
-    EditComponent
+    EditComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatCardModule,
     MatChipsModule,
     MatDialogModule,
-    MatInputModule
+    MatInputModule,
+    MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

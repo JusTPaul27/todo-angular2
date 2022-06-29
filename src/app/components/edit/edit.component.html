@@ -5,13 +5,36 @@
         <mat-label>Todo Name</mat-label>
         <input matInput type="text"  [(ngModel)]="todo.name">
       </mat-form-field>
-      <mat-form-field color="accent"  appearance="fill">
-        <mat-label>Priority</mat-label>
-        <input matInput type="number"  [(ngModel)]="todo.priority">
-      </mat-form-field>
+      <mat-label>Priority: 
+        <span *ngIf="todo.priority === 0">Bassa</span>
+        <span *ngIf="todo.priority === 1">Media</span>
+        <span *ngIf="todo.priority === 2">Alta</span>
+        <span *ngIf="todo.priority === 3">Molto alta</span>
+    </mat-label>
+      <mat-slider
+      [style.backgroundColor]="todo.priority | priorityColor"
+        class="example-margin"
+        [max]="3"
+        [min]="0"
+        [tickInterval]="getSliderTickInterval()"
+        [(ngModel)]="todo.priority"
+        aria-labelledby="example-name-label">
+    </mat-slider>
       <mat-form-field color="accent"  appearance="fill">
         <mat-label>Tags</mat-label>
-        <input matInput type="text"  [ngModel]="(todo.tags | tagsString) " (ngModelChange)="this.todo.tags = convertTags($event)">
+        <mat-chip-list #chipList>
+            <mat-chip *ngFor="let tag of todo.tags" (removed)="remove(tag)">
+              {{tag}}
+              <button matChipRemove>
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+            <input 
+                   [matChipInputFor]="chipList"
+                   [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                   [matChipInputAddOnBlur]="addOnBlur"
+                   (matChipInputTokenEnd)="add($event)">
+          </mat-chip-list>
       </mat-form-field>
     <button mat-button color="white" [disabled]="!todo.name" (click)="saveTodo()">Save</button>
 </div>

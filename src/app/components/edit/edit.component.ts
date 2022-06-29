@@ -3,6 +3,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Todo } from 'src/app/model/todo';
 import { DataService } from 'src/app/services/data.service';
+import {COMMA, ENTER, SPACE} from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
 
 @Component({
   selector: 'app-edit',
@@ -19,6 +21,11 @@ export class EditComponent implements OnInit {
   };
 
   public id : string | null =''
+
+  
+  autoTicks = true;
+  showTicks = true;
+  tickInterval = 1;
 
   constructor(
     private dataS: DataService, private router: Router,
@@ -61,6 +68,42 @@ export class EditComponent implements OnInit {
     this.dialogRef.close()
     // this.router.navigate(['/todo'])
   }
+
+
+  getSliderTickInterval(): number | 'auto' {
+    if (this.showTicks) {
+      return this.autoTicks ? 'auto' : this.tickInterval;
+    }
+
+    return 0;
+  }
+
+
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA, SPACE] as const;
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.todo.tags.push(value);
+    }
+
+    // Clear the input value
+    event.chipInput!.clear();
+  }
+
+  remove(tag: any): void {
+    const index = this.todo.tags.indexOf(tag);
+
+    if (index >= 0) {
+      this.todo.tags.splice(index, 1);
+    }
+  }
+}
+
   
 
-}
+
+
