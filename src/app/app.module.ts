@@ -22,6 +22,7 @@ import { TagsStringPipe } from './pipes/tags-string/tags-string.pipe';
 import { PrioritySortPipe } from './pipes/priority-sort/priority-sort.pipe';
 import { EditComponent } from './components/edit/edit.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PriorityStringPipe } from './pipes/priority-string/priority-string.pipe';
 
 
 
@@ -36,6 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TagsStringPipe,
     PrioritySortPipe,
     EditComponent,
+    PriorityStringPipe,
   ],
   imports: [
     BrowserModule,
